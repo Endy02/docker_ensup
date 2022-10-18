@@ -14,7 +14,7 @@ services:
       - api
 
   api:
-    image: student_list
+    build: ./simple_api
     container_name: api
     volumes:
       - ./simple_api/student_age.json:/data/student_age.json
