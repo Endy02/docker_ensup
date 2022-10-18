@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+# Projet web
+  web:
+    image: php:apache
+    container_name: web_student
+    ports :
+     - "80:80"
+    volumes:
+     - ./website/:/var/www/html/
+    networks:
+      - testnetwork
+    depends_on:
+      - api
+
+  api:
+    image: student_list
+    container_name: api
+    volumes:
+      - ./simple_api/student_age.json:/data/student_age.json
+    ports:
+      - "5000:5000"
+    networks:
+      - testnetwork
+
+networks:
+  testnetwork: 
+    driver: bridge
+
+      
